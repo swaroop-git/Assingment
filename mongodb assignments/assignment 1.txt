@@ -1,0 +1,48 @@
+1) db.movies.find().pretty()
+2) db.movies.find({writer: "Quentin Tarantino"}).pretty()
+3) db.movies.find({actor: {$in:["Brad Pitt"]}}).pretty()
+4) db.movies.find({franchise: "The Hobbit"}).pretty()
+5) db.movies.find({$and: [{year: {$gt: 1990}},{year: {$lt: 2000}}]}).pretty()
+6) db.movies.find({$or: [{year: {$lt: 2000}},{year: {$gt: 2010}}]}).pretty()
+
+text search
+1) db.movies.createIndex({synopsis: "text"})
+   db.movies.find({$text: {$search: "Bilbo"}}).pretty()
+
+2) db.movies.find({$text: {$search: "Gandalf"}}).pretty()
+
+3)  db.movies.find({$text: {$search: "Bilbo   -Gandalf"}},{synopsis:1}).pretty()
+
+4) db.movies.find({$text: {$search: "dwarwes hobbit"}},{synopsis:1}).pretty()
+{
+        "_id" : ObjectId("60a55f9586c26af1a0af3903"),
+        "synopsis" : "A reluctant hobbit,Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarwes to reclaim their mountain home - and the gold within it - from the dragon smaug.\""
+}
+{
+        "_id" : ObjectId("60a5604986c26af1a0af3904"),
+        "synopsis" : "The dwarwes along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Blibo Baggins is in possesion of a mysterious and magical ring."
+}
+
+5)  db.movies.find({$text: {$search: "gold dragon" }},{synopsis:1}).pretty()
+{
+        "_id" : ObjectId("60a55f9586c26af1a0af3903"),
+        "synopsis" : "A reluctant hobbit,Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarwes to reclaim their mountain home - and the gold within it - from the dragon smaug.\""
+}
+
+Delete documents
+1) db.movies.remove({title: "Pee Wee Herman's Big Adventure"})
+WriteResult({ "nRemoved" : 1 })
+
+2) db.movies.remove({title: "Avatar"})
+WriteResult({ "nRemoved" : 1 })
+
+
+
+Quering related collections
+1)  db.users.find().pretty()
+2) db.posts.find().pretty()
+3) db.posts.find({username:"GoodGuyGreg"}).pretty()
+4) db.posts.find({username:"Scumbagsteve"}).pretty()
+5) db.comments.find().pretty()
+6)db.comments.find({username:"GoodGuyGreg"}).pretty()
+7)db.comments.find({username:"Scumbagsteve"}).pretty()

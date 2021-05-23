@@ -1,0 +1,146 @@
+1) db.addresses.find().pretty()
+2)  db.addresses.aggregate([{$group: {_id: {restaurant_id:"$restaurant_id", name:"$name", borough:"$borough", cuisine:"$cuisine"}}}])
+{ "_id" : { "restaurant_id" : "40759602", "name" : "Hale & Hearty Soups", "borough" : "Manhattan", "cuisine" : "Soups & Sandwiches" } }
+{ "_id" : { "restaurant_id" : "40535467", "name" : "Chiu Hong Bakery", "borough" : "Manhattan", "cuisine" : "Bakery" } }
+{ "_id" : { "restaurant_id" : "40758772", "name" : "New Sunny Garden Restaurant", "borough" : "Queens", "cuisine" : "Chinese" } }
+{ "_id" : { "restaurant_id" : "40535659", "name" : "Antonio'S Pizza", "borough" : "Brooklyn", "cuisine" : "Pizza" } }
+{ "_id" : { "restaurant_id" : "40537390", "name" : "Anesis Cafe", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "restaurant_id" : "40398024", "name" : "Pax Wholesome Foods", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "restaurant_id" : "40423356", "name" : "Glaser'S Bakery", "borough" : "Manhattan", "cuisine" : "Bakery" } }
+{ "_id" : { "restaurant_id" : "40678550", "name" : "Cinema Cafe & Bar", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "restaurant_id" : "40391271", "name" : "Richer'S Bakery", "borough" : "Queens", "cuisine" : "Bakery" } }
+{ "_id" : { "restaurant_id" : "40727214", "name" : "Chinantla", "borough" : "Brooklyn", "cuisine" : "Mexican" } }
+{ "_id" : { "restaurant_id" : "40392410", "name" : "Dunkin' Donuts", "borough" : "Queens", "cuisine" : "Donuts" } }
+{ "_id" : { "restaurant_id" : "40861252", "name" : "Sweet & Vicious", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "restaurant_id" : "40525206", "name" : "Full Moon Pizza", "borough" : "Bronx", "cuisine" : "Pizza" } }
+{ "_id" : { "restaurant_id" : "40810476", "name" : "Funtopia Usa", "borough" : "Queens", "cuisine" : "American " } }
+{ "_id" : { "restaurant_id" : "40859658", "name" : "Kimchee Korean Restaurant", "borough" : "Brooklyn", "cuisine" : "Korean" } }
+{ "_id" : { "restaurant_id" : "40385974", "name" : "Dakota Diner", "borough" : "Staten Island", "cuisine" : "American " } }
+{ "_id" : { "restaurant_id" : "40423559", "name" : "Greenwood Bakery", "borough" : "Queens", "cuisine" : "Bakery" } }
+{ "_id" : { "restaurant_id" : "40367232", "name" : "O'Hanlon'S Pub", "borough" : "Queens", "cuisine" : "Irish" } }
+{ "_id" : { "restaurant_id" : "40373912", "name" : "The Malt House", "borough" : "Manhattan", "cuisine" : "Armenian" } }
+{ "_id" : { "restaurant_id" : "40729439", "name" : "Cositas Ricas", "borough
+
+
+3) db.addresses.aggregate([{$group: {_id: { name:"$name", borough:"$borough", cuisine:"$cuisine"}}}])
+{ "_id" : { "name" : "La Palina Restaurant", "borough" : "Brooklyn", "cuisine" : "Italian" } }
+{ "_id" : { "name" : "Rockefeller U/Abby Bldg", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Luigi'S Pizza & Restaurant", "borough" : "Queens", "cuisine" : "Pizza" } }
+{ "_id" : { "name" : "Bahia Restaurant & Cafe", "borough" : "Brooklyn", "cuisine" : "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" } }
+{ "_id" : { "name" : "Gussy'S Bar", "borough" : "Queens", "cuisine" : "American " } }
+{ "_id" : { "name" : "Ace Bar", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Jg Melon Restaurant", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Il Posto", "borough" : "Brooklyn", "cuisine" : "Italian" } }
+{ "_id" : { "name" : "Carlow East", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Paris Blues", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Cloister Cafe", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Marbella Restaurant", "borough" : "Queens", "cuisine" : "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" } }
+{ "_id" : { "name" : "Shenanigans Pub", "borough" : "Brooklyn", "cuisine" : "American " } }
+{ "_id" : { "name" : "Munchy'S", "borough" : "Manhattan", "cuisine" : "Delicatessen" } }
+{ "_id" : { "name" : "Lahore Delicatessen", "borough" : "Manhattan", "cuisine" : "Bangladeshi" } }
+{ "_id" : { "name" : "La Gourmet", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "The Red Cat", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Fordham University/Mcginley Center/Ramskeller Kitchen", "borough" : "Bronx", "cuisine" : "American " } }
+{ "_id" : { "name" : "The Green Table(Chelsea Market)", "borough" : "Manhattan", "cuisine" : "American " } }
+{ "_id" : { "name" : "Abitino'S Pizza", "borough" : "Manhattan", "cuisine" : "Pizza" } }
+Type "it" for more
+
+5)db.addresses.aggregate([{$match:{borough:"Bronx"}},{$limit:5}]).pretty()
+
+6) db.addresses.find({borough:"Bronx"}).pretty()
+
+7) db.addresses.find({"borough": "Bronx"}).skip(5).limit(5).pretty()
+
+8) db.addresses.find({"grades.score" : {$gt: 90}}).pretty()
+
+9)db.addresses.find({"grades":{$elemMatch:{score:{$gt:80, $lt:100}}}})
+
+
+10)db.addresses.find({"address.coord.0": {$lt: -95.754168}})
+
+
+
+11)db.addresses.find({$and: [{"cuisine": {$ne: "American "}}, {"grades":{$elemMatch:{score:{$gt:70}}}}, {"address.coord.0": {$lt: -65.754168}}]})
+
+
+
+12)db.addresses.find({$and: [{"cuisine": {$ne: "American "}}, {"grades":{$elemMatch:{score:{$gt:70}}}}, {"address.coord.0": {$lt: -65.754168}}]})
+
+
+
+13)db.addresses.find({$and: [{"cuisine": {$ne: "American "}}, {"grades.grade": "A"}, {"borough": {$ne: "Brooklyn"}}]}).sort({cuisine:-1})
+
+
+14)db.addresses.find({name: {$regex: /^Wil/}},{restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+
+
+
+15)db.addresses.find({name: {$regex: /ces$/}},{restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+
+
+
+16)db.addresses.find({name: {$regex: /Reg/}},{restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+
+
+
+17)db.addresses.find({$and: [{borough: "Bronx"},{$or: [{cuisine:"American "},{cuisine: "Chinese"}]}]})
+
+
+
+18)db.addresses.find({$or: [{borough: "Staten Island"}, {borough: "Queens"},{borough: "Bronxor Brooklyn"}]}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+
+
+19)db.addresses.find({borough:{$not: {$in: ["Staten Island", "Queens", "Bronxor Brooklyn"]}}}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+
+
+
+20)db.addresses.find({"grades.score": {$not: {$gt: 10}}}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+
+
+21)db.addresses.find({$and: [{cuisine: {$not: {$in: ["American ", "Chinese"]}}}, {name: {$regex: /^Wil/}}]}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1})
+
+
+22)db.addresses.find({"grades": {$elemMatch: {score: 11, "date": ISODate("2014-08-11T00:00:00Z"), grade: "A"}}}, {restaurant_id: 1, name: 1, grades: 1})
+
+
+23)db.addresses.find({"grades.1": {"date": ISODate("2014-08-11T00:00:00Z"), "grade": "A", score: 9}}, {restaurant_id: 1, name: 1, grades: 1})
+
+
+24)db.addresses.find({$and: [{"grades.1.grade":"A"}, {"grades.1.score": 9}, {"grades.1.date": ISODate("2014-08-11T00:00:00Z")}]},{_id:0, restaurant_id:1, name:1, grades:1}).pretty()
+
+// {restaurant_id: 1, name: 1, address: 1}
+
+
+25)db.addresses.find({$and: [{"address.coord.1": {$gt: 42}}, {"address.coord.1": {$lte: 52}}]}, {restaurant_id: 1, name: 1, address: 1}).pretty()
+
+
+26)db.addresses.find({},{name:1}).sort({name: -1})
+
+
+27)db.addresses.find({},{name:1}).sort({name: 1})
+
+
+28)db.addresses.find({},{cuisine:1, borough:1}).sort({cuisine: 1}).sort({borough:1})
+
+29)db.addresses.find({}).count()
+
+
+30)db.addresses.count({$or: [{"address.street": {$exists: true}}, {"address.street": {$not: {$eq: null}}}]})
+
+31)db.addresses.find({"address.street": {$regex: /Street/}})
+
+
+
+32)db.addresses.find({$and: [{"address.coord.0": {$type: 1}}, {"address.coord.1": {$type: 1}}]}).pretty()
+
+
+
+33)db.addresses.find({"grades": {$elemMatch: {score: {$mod: [7,0]}}}},{restaurant_id: 1, name: 1, grade: 1}).pretty()
+
+
+
+34)db.addresses.find({name: {$regex: /mon/}},{restaurant_id: 1, "address.coord": 1, borough: 1, cuisine: 1})
+
+
+35)db.addresses.find({name: {$regex: /^Mad/}},{restaurant_id: 1, "address.coord": 1, borough: 1, cuisine: 1, name:1})
+
