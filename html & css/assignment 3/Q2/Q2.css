@@ -1,0 +1,51 @@
+body{
+    font-size: 13px;
+    font: weight 400px;
+    color: white;
+    
+    background-image: url(/img/pc.png);
+    
+}
+
+#container{
+
+    position: relative;
+    margin:auto;
+    width:300px;
+    background: #fff;
+    background-color: rgba(12, 11, 11, 0.5)
+
+}
+ 
+#main{
+    
+    width: 800px;
+    margin: auto;
+}
+
+.form-row{
+    margin-left: 25px;
+    margin-top: 30px;
+    width: 125px;
+    color:white;
+    font-size: 18;
+    font-weight: 700;
+}
+
+.regform{
+    width: 300px;
+    background-color: rgb(0, 0, 0, 1);
+    margin: auto;
+    border-radius: 10%;
+    text-align: left;
+}
+
+button{
+    color: rgb(0, 0, 0);
+    background-color: #3BAF9F;
+    display: block;
+    border-radius: 12px;
+    
+}
+
+
