@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>practice doc!</title>
+    </head>
+    <body>
+        <div>
+        </div>
+        <script>
+            
+          
+          var n= prompt("please enter no.");
+          function isprime(n) {
+            for(i=2; i<=n ; i++){
+               if(n%i===0){
+                   document.write( n+ " is not a prime no." );
+                   return false;
+                }
+               document.write( n+ " is a prime no.")
+               return true;
+            }
+              
+          }
+          isprime(n);
+        </script>
+    </body>
+</html>
