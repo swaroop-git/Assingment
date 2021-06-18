@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// create ninja Schema & model
+// create fruits Schema & model
 const fruitsSchema = new Schema({
     name: {
         type: String,
